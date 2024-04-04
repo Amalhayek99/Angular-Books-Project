@@ -1,0 +1,37 @@
+<div class="form-container">
+  <h2>Add New Book</h2>
+  <form (ngSubmit)="addBook(bookForm)" #bookForm="ngForm"> <!-- Pass the form to the addBook method -->
+    <label for="bookName">Book Name:</label>
+    <input type="text" id="bookName" name="bookName" [(ngModel)]="newBook.name" required #bookName="ngModel">
+    <div *ngIf="bookName.touched && bookName.invalid" class="error">Please fill the field</div>
+
+    <label for="bookAuthor">Author:</label>
+    <input type="text" id="bookAuthor" name="bookAuthor" [(ngModel)]="newBook.author" required #bookAuthor="ngModel">
+    <div *ngIf="bookAuthor.touched && bookAuthor.invalid" class="error">Please fill the field</div>
+
+    <label for="bookTags">Tags:</label>
+    <input type="text" id="bookTags" name="bookTags" [(ngModel)]="newBook.tags" required #bookTags="ngModel">
+    <div *ngIf="bookTags.touched && bookTags.invalid" class="error">Please fill the field</div>
+
+    <label for="bookQuantity">Quantity:</label>
+    <input type="number" id="bookQuantity" name="bookQuantity" [(ngModel)]="newBook.quantity" required #bookQuantity="ngModel">
+    <div *ngIf="bookQuantity.touched && bookQuantity.invalid" class="error">Please fill the field</div>
+
+    <label for="bookImage">Image:</label>
+    <input type="file" id="bookImage" name="bookImage" (change)="onFileSelected($event)" required>
+    <!-- Removed the #bookImage="ngModel" since it doesn't apply to file inputs -->
+
+    <button type="submit" [disabled]="!bookForm.form.valid">Add Book</button>
+  </form>
+</div>
+
+<!--[(ngModel)] -->
+<!--משייך את האינפוט של הטופס לטופס, ה קבוכ צריך לרשום כל פעם עוזר לנו בתנאים של מה שצריך להיות בטופס-->
+<!--for-->
+<!--תכונה המשמשת בתגיות <label> כדי לשייך את התווית לרכיב טופס. -->
+
+  <!--(ngSubmit) and (change) are both event bindings in Angular-->
+<!--(ngSubmit)-->
+<!--  מאזין לאירוע הגשת הטופס. כאשר הטופס נשלח על ידי לחיצה->
+<!-(change)->
+<!-להאזין לשינויים בערכים שלהם. כאשר הערך של רכיב הקלט משתנה (למשל, כאשר המשתמש מקליד קלט טקסט או בוחר אפשרות בתפריט נפתח), השיטה שצוינה ב- (שינוי) נקראת. הוא משמש בדרך כלל לעדכון מצב הרכיב בהתבסס על קלט המשתמש.-->
